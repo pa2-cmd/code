@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AquaQuest Code Display — PrismJS Highlighted</title>
+
+  <!-- PrismJS Theme -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #0369a1;
+      margin-bottom: 1rem;
+    }
+    pre {
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      overflow-x: auto;
+      white-space: pre;
+      background: #272822;
+      padding: 1.5rem;
+      max-height: 90vh;
+    }
+    code {
+      font-size: 0.9rem;
+    }
+/* Toggle button style */
+#toggleScroll {
+  display: inline-block;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 1rem;
+}
+#toggleScroll:hover { background: #0284c7; }
+
+/* Code block scroll states */
+pre.scrollable {
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  white-space: pre;
+  transition: all 0.4s ease;
+}
+pre.full {
+  max-height: none;
+  overflow: visible;
+  white-space: pre-wrap;
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>💡 AquaQuest — Full HTML Source Code</h1>
+  <p style="text-align:center; color:#475569;">
+    Below is the <strong>complete HTML + CSS + JS</strong> code of the AquaQuest webpage, displayed using <strong>PrismJS</strong> syntax highlighting.
+  </p>
+  <div class="center">
+  <button id="toggleScroll">🧭 Toggle Scroll Mode</button>
+</div>
+
+
+
+  <pre><code class="language-html">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+  &lt;title&gt;AquaQuest — School Aquarium Booking&lt;/title&gt;
+  &lt;meta name="description" content="AquaQuest — fun, educational aquarium trips for students (Grades 4-6). Book your school trip!" /&gt;
+
+  &lt;!-- Tailwind CDN (for quick prototype) --&gt;
+  &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            playful: ["Baloo 2", "Fredoka One", "cursive"],
+            body: ["Poppins", "Nunito", "sans-serif"]
+          }
+        }
+      }
+    };
+  &lt;/script&gt;
+
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&amp;family=Poppins:wght@300;400;600&amp;display=swap" rel="stylesheet"&gt;
+
+  &lt;!-- Lottie player for simple animations --&gt;
+  &lt;script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"&gt;&lt;/script&gt;
+
+  &lt;style&gt;
+    .ocean-bg {
+      background: linear-gradient(180deg,#7dd3fc 0%, #e6f6ff 40%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 120px;
+      bottom: -1px;
+      background: url('data:image/svg+xml;utf8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"&gt;&lt;path fill="%23ffffff" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,176C384,181,480,203,576,208C672,213,768,203,864,192C960,181,1056,171,1152,160C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"&gt;&lt;/path&gt;&lt;/svg&gt;') repeat-x bottom/cover;
+      animation: wave 8s linear infinite;
+      opacity: .9;
+    }
+
+    @keyframes wave {
+      0% { background-position-x: 0; }
+      100% { background-position-x: 1000px; }
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 9999px;
+      pointer-events: none;
+      opacity: 0.9;
+      transform: translate(-50%, -50%);
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translate(-50%, 0) scale(1); opacity: 0.9 }
+      to { transform: translate(-50%, -200px) scale(0.6); opacity: 0 }
+    }
+
+    .soft-card { box-shadow: 0 8px 20px rgba(6, 17, 42, 0.08); }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="font-body text-slate-800 leading-relaxed"&gt;
+
+  &lt;!-- HERO SECTION --&gt;
+  &lt;header class="ocean-bg relative min-h-[520px] flex items-center"&gt;
+    &lt;div class="container mx-auto px-6 lg:px-12 relative z-20"&gt;
+      &lt;div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"&gt;
+        &lt;div&gt;
+          &lt;h1 class="font-playful text-4xl sm:text-5xl lg:text-6xl leading-tight text-sky-900"&gt;AquaQuest&lt;/h1&gt;
+          &lt;p class="mt-4 text-lg sm:text-xl text-slate-700 max-w-xl"&gt;Dive into discovery — Book a school trip full of hands-on marine learning, interactive shows, and a treasure hunt designed for Grades 4–6.&lt;/p&gt;
+
+          &lt;div class="mt-6 flex flex-wrap gap-3"&gt;
+            &lt;a href="#booking" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-3 rounded-2xl shadow-lg transform transition hover:-translate-y-1"&gt;🎟️ Book Your Trip&lt;/a&gt;
+            &lt;button id="play-sound" class="inline-flex items-center gap-2 bg-white border border-slate-200 px-4 py-3 rounded-2xl"&gt;🔊 Play Ocean Sounds&lt;/button&gt;
+          &lt;/div&gt;
+
+          &lt;ul class="mt-8 grid grid-cols-2 gap-3 max-w-md text-sm text-slate-700"&gt;
+            &lt;li&gt;🐠 Guided kid-friendly tours&lt;/li&gt;
+            &lt;li&gt;🧭 Treasure hunt &amp; activities&lt;/li&gt;
+            &lt;li&gt;🦑 Touch &amp; discovery tanks&lt;/li&gt;
+            &lt;li&gt;📚 Curriculum-linked learning&lt;/li&gt;
+          &lt;/ul&gt;
+
+          &lt;div class="mt-6 text-sm text-slate-600"&gt;Estimated visit length: &lt;strong&gt;2–3 hours&lt;/strong&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="flex justify-center lg:justify-end"&gt;
+          &lt;div class="w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] soft-card rounded-2xl bg-gradient-to-tr from-sky-50 to-white p-3"&gt;
+            &lt;lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tfb3estd.json" background="transparent" speed="1" loop autoplay&gt;&lt;/lottie-player&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="wave"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main class="container mx-auto px-6 lg:px-12 -mt-16 relative z-30"&gt;
+    &lt;section class="bg-white rounded-3xl p-6 md:p-10 soft-card"&gt;
+      &lt;h2 class="text-2xl font-semibold text-sky-900"&gt;What’s inside AquaQuest?&lt;/h2&gt;
+      &lt;p class="mt-3 text-slate-600"&gt;A fun, safe and curriculum-friendly experience for curious Grade 4–6 students.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section id="booking" class="mt-12 bg-white rounded-3xl p-6 md:p-10 soft-card"&gt;
+      &lt;form id="booking-form" class="space-y-4 bg-sky-50 p-4 rounded-2xl" method="POST" action="https://formspree.io/f/YOUR_FORM_ID"&gt;
+        &lt;input type="text" name="school" placeholder="School name" required class="px-3 py-2 rounded-md border border-slate-200"&gt;
+        &lt;button type="submit" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-3 rounded-2xl"&gt;Send Booking Request&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+
+    &lt;footer class="mt-12 py-8 text-sm text-slate-600"&gt;
+      &lt;div class="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-6"&gt;
+        &lt;div&gt;&lt;strong class="text-sky-900"&gt;AquaQuest Aquarium&lt;/strong&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  &lt;/main&gt;
+
+  &lt;script&gt;
+    const playBtn = document.getElementById('play-sound');
+    const audio = new Audio('https://cdn.pixabay.com/download/audio/2021/11/11/audio_0d2d0b0a19.mp3?filename=waves-1134.mp3');
+    audio.loop = true;
+    playBtn.addEventListener('click', () =&gt; {
+      if (audio.paused) { audio.play(); playBtn.textContent = '🔊 Stop Ocean Sounds' }
+      else { audio.pause(); playBtn.textContent = '🔊 Play Ocean Sounds' }
+    });
+
+    const form = document.getElementById('booking-form');
+    const msg = document.createElement('div');
+    form.appendChild(msg);
+    form.addEventListener('submit', async (e) =&gt; {
+      e.preventDefault();
+      msg.textContent = 'Sending...';
+      const data = new FormData(form);
+      try {
+        const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        if (resp.ok) { msg.textContent = '🐡 Your request has been sent!'; form.reset(); }
+        else { msg.textContent = 'Oops — something went wrong.'; }
+      } catch { msg.textContent = 'Network error.'; }
+    });
+
+    const colors = ['rgba(255,255,255,0.9)','rgba(255,255,255,0.6)','rgba(255,255,255,0.8)'];
+    document.addEventListener('mousemove', (e) =&gt; {
+      if (Math.random() &gt; 0.92) return;
+      const bubble = document.createElement('div');
+      const size = Math.floor(Math.random()*18)+8;
+      bubble.style.width = size+'px';
+      bubble.style.height = size+'px';
+      bubble.style.left = e.pageX+'px';
+      bubble.style.top = e.pageY+'px';
+      bubble.style.background = colors[Math.floor(Math.random()*colors.length)];
+      bubble.className = 'bubble';
+      bubble.style.animationDuration = (Math.random()*2+2)+'s';
+      document.body.appendChild(bubble);
+      setTimeout(()=&gt; bubble.remove(), 2500);
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+
+  <!-- PrismJS scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+  <script>
+  const toggleBtn = document.getElementById('toggleScroll');
+  const codeBlock = document.querySelector('pre');
+  let scrollEnabled = true;
+
+  // Initialize as scrollable
+  codeBlock.classList.add('scrollable');
+
+  toggleBtn.addEventListener('click', () => {
+    scrollEnabled = !scrollEnabled;
+    if (scrollEnabled) {
+      codeBlock.classList.remove('full');
+      codeBlock.classList.add('scrollable');
+      toggleBtn.textContent = '🧭 Toggle Scroll Mode';
+    } else {
+      codeBlock.classList.remove('scrollable');
+      codeBlock.classList.add('full');
+      toggleBtn.textContent = '🧭 Collapse Scroll Mode';
+    }
+  });
+</script>
+</body>
+</html>
